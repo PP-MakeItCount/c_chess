@@ -1,0 +1,12 @@
+   #include<stdio.h>
+   #include<conio.h>
+   void main()
+   {
+		float a,b,c;
+		printf("enter tow numbers");
+		scanf("%d%d" ,&a,&b);
+		c=a+b/2;
+		printf("avrage=%d",c);
+		getch();
+
+   }

@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+void main()
+{
+	int gd=0,gm=0,i;
+	void *ptr;
+	clrscr();
+	initgraph(&gd,&gm,"x:\\bgi");
+	settextstyle(2,0,5);
+	outtextxy(40,50,"Pramod....");
+	getimage(40,50,60,60,ptr);
+	for(i=30;i<90;i+=10)
+	{
+		putimage(i,200,ptr,1);
+		delay(50);
+	}
+
+	getch();
+	closegraph();
+}

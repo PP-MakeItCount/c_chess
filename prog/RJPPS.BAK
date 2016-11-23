@@ -1,0 +1,16 @@
+	#include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int bs,hra,da,gs;
+		clrscr();
+		printf("enter bs=");
+		scanf("%d",&bs);
+		printf("enter hra=");
+		scanf("%d",&hra);
+		printf("enter da=");
+		scanf("%d",&da);
+		gs=bs+hra+da;
+		printf("gross salary=%d",gs);
+		getch();
+	}

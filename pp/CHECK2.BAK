@@ -1,0 +1,18 @@
+#include<stdio.h>
+#include<alloc.h>
+#include<graphics.h>
+#include<conio.h>
+
+void main()
+{
+	FILE *fp;
+	void *ptr;
+	int a=0;
+	initgraph(&a,&a,"x:\\bgi");
+	fp=fopen("x:\\img.TXT","w");
+	ptr=malloc(imagesize(0,0,40,40));
+	pieslice(10,10,0,360,5);
+	getimage(0,0,40,40,ptr);
+	fwrite(ptr,imagesize(0,0,40,40),1,fp);
+	getch();
+}

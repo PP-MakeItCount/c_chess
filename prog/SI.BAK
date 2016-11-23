@@ -1,0 +1,15 @@
+	#include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int p,n,r;
+		float si;
+		clrscr();
+		printf("enter value of p=           ");
+		printf("enter value of n=           ");
+		printf("enter value of r=           ");
+		scanf("%d%d%d",&p,&n,&r);
+		si=p*n*r/100;
+		printf("simple intrest=%f",si);
+		getch();
+		}

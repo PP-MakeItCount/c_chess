@@ -1,0 +1,14 @@
+ #include<stdio.h>
+ #include<conio.h>
+ void main()
+	{
+		long N,fd,ld,sd;
+		clrscr();
+		printf("enter five digit number N=");
+		scanf("%ld",&N);
+		fd=N/10000;
+		ld=N%10;
+		sd=(N/1000)%10;
+		printf("number=%ld,first digit=%ld,last digit=%ld,second digit=%ld",N,fd,ld,sd);
+		getch();
+	}

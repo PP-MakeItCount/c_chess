@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<conio.h>
+
+void main()
+ {
+	int n,a;
+	FILE *fp
+
+	fp=fopen("x:\\pp\\sumavg.txt","r+");
+
+	if(fp==NULL)
+	 printf("\n\nfile creation error!!!!!!!!!!");
+	 printf("How many numbers: ");
+	 scanf("%d",&n);
+	while(n>0)
+	{
+		printf("Enter a number: ");
+
+		scanf("%d",a);
+		fprintf(fp,"%d",a);
+		n--;
+
+	}
+	rewind(fp);
+
+	n=0;
+
+	while(!feof(fp))
+	{
+		scanf(fp,"%d",a);
+		n=n+a;
+
+	}
+	printf("sum=%d\tavg=%d",n,n/4);
+	getch();
+	fclose(fp);
+
+ }

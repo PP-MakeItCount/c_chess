@@ -1,0 +1,13 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+	{
+		long m,cm,km;
+		clrscr();
+		printf("kilometer=");
+		scanf("%ld",&km);
+		m=km*1000;
+		cm=m*100;
+		printf("kilometer=%ld/n/nmeter=%ld/rcentimeter=%ld",km,m,cm);
+		getch();
+	}

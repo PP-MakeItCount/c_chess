@@ -1,0 +1,67 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+
+int i;
+char ch;
+void main()
+{
+	char a,w,d,s,q;
+	int gd=0,gm=0,x=320,y=240;
+	clrscr();
+	initgraph(&gd,&gm,"x:\\bgi");
+
+	circle(x,y,10);
+	getch();
+
+	while(1)
+	{
+		ch=getch(kbhit()) ;
+	if(kbhit())
+	{
+		switch(ch)
+		{
+			case 'a':
+
+			for(i=0;i<10;i++,x=x-10)
+			{
+			circle(x,y,10);
+			delay(300);
+			cleardevice();
+			}break;
+
+			case 'q': exit(0);
+
+			case 'd': for(i=0;i<20;i++,x=x+10)
+					{
+					circle(x,y,10);
+					delay(200);
+					cleardevice();
+					}
+					break;
+
+			case 's':
+
+				for(i=0;i<10;i++,y=y+10)
+				{
+					circle(x,y,10);
+					delay(200);
+					cleardevice();
+				}
+			break;
+
+			case 'w': for(i=0;i<10;i++,y=y-10)
+					{
+					circle(x,y,10);
+					delay(200);
+					cleardevice();
+					}
+					break;
+
+			}
+
+		}
+
+	}
+      closegraph();
+}

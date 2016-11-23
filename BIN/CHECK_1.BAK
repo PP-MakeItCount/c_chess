@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+#include<dos.h>
+int bcolor;
+
+void red()
+{
+	setfillstyle(2,4);
+	bcolor=4;
+	outtextxy(20,20,"pramod");
+}
+void green()
+{
+	setfillstyle(3,10);
+	bcolor=10;
+	outtextxy(20,20,"pramod");
+}
+void main()
+{
+	int gd=0,gm=0;
+	initgraph(&gd,&gm,"x:\\bgi");
+	red();
+	green();
+	getch();
+}

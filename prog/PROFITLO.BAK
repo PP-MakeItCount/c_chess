@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int Sp,Cp,p,l;
+	clrscr();
+	printf("Enter Selling price \n Sp");
+	scanf("%d",Sp=);
+	printf("Enter Cost price \n Cp");
+	scanf("%d",Cp=);
+	if (Sp>Cp)
+		{
+			printf("There is Profit");
+			p=Sp-Cp;
+			printf("Profit=%d",p);
+		}
+	else
+		{
+			printf("There is loss");
+			l=Cp-Sp;
+			printf("Loss=%d",l);
+		}
+	getch();
+}

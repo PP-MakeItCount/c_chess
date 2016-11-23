@@ -1,0 +1,181 @@
+/*								MOUSE.H								*/
+/*							Updated Ver : 16 Jul,2012				*/
+/*							'inblock()' bug fixed 					*/
+/*				Suggestions and recommendations are Welcome			*/
+/*						Email : adeshatole200@gmail.com				*/
+
+
+#include<dos.h>
+
+union REGS _INREGISTER,_OUTREGISTER;
+int _X,_Y;
+int X_REL,Y_REL,X_PRESS,Y_PRESS;
+int PRESS=0;
+
+int detectmouse()
+{
+  _INREGISTER.x.ax=0;
+  int86(0x33,&_INREGISTER,&_OUTREGISTER);
+  if(_OUTREGISTER.x.ax)
+  return 1;
+  else
+  return 0;
+}
+
+int showmouse()
+{
+  _INREGISTER.x.ax=1;
+  int86(0x33,&_INREGISTER,&_OUTREGISTER);
+  return 1;
+}
+
+int hidemouse()
+{
+  _INREGISTER.x.ax=2;
+  int86(0x33,&_INREGISTER,&_OUTREGISTER);
+  return 1;
+}
+
+int getxpos()
+{
+	_INREGISTER.x.ax=3;
+	int86(0x33,&_INREGISTER,&_OUTREGISTER);
+
+	return _OUTREGISTER.x.cx;
+}
+
+int getypos()
+{
+	_INREGISTER.x.ax=3;
+	int86(0x33,&_INREGISTER,&_OUTREGISTER);
+
+	return _OUTREGISTER.x.dx;
+}
+
+int getbuttonstatus()
+{	
+	int status;
+	_INREGISTER.x.ax=3;
+	int86(0x33,&_INREGISTER,&_OUTREGISTER);
+	status=_OUTREGISTER.x.bx;
+	return status;
+}
+
+int restrictmouse(int x1,int y1,int x2,int y2)
+{
+	_INREGISTER.x.ax=7;
+	_INREGISTER.x.cx=x1;
+	_INREGISTER.x.dx=x2;
+	int86(0x33,&_INREGISTER,&_OUTREGISTER);
+	_INREGISTER.x.ax=8;
+	_INREGISTER.x.cx=y1;
+	_INREGISTER.x.dx=y2;
+	int86(0x33,&_INREGISTER,&_OUTREGISTER);
+	return 1;
+}
+
+int setxy(int x,int y)
+{
+	_INREGISTER.x.ax=4;
+	_INREGISTER.x.cx=x;
+	_INREGISTER.x.dx=y;
+	int86(0x33,&_INREGISTER,&_OUTREGISTER);
+	return 1;
+}
+
+int getpressstatus()
+{
+	_INREGISTER.x.ax=5;
+	int86(0x33,&_INREGISTER,&_OUTREGISTER);
+	if(_OUTREGISTER.x.bx==1)
+	PRESS=1;
+	X_PRESS=_OUTREGISTER.x.cx;
+	Y_PRESS=_OUTREGISTER.x.dx;
+	
+	_INREGISTER.x.ax=6;
+	int86(0x33,&_INREGISTER,&_OUTREGISTER);
+	if(_OUTREGISTER.x.bx==1)
+	PRESS=0;
+	X_REL=_OUTREGISTER.x.cx;
+	Y_REL=_OUTREGISTER.x.dx;
+	
+	return PRESS;
+}
+
+int inblock(int x1,int y1,int x2,int y2)
+{
+		int b_flag=0;
+		if(x1<x2&&y1<y2)
+		{
+			if(getxpos()>x1&&getxpos()<x2)
+			{
+				if(getypos()>y1&&getypos()<y2)
+				{
+					b_flag=1;
+				}
+			}
+			else
+			b_flag=0;
+		}
+		else
+		{
+			if(x1>x2&&y1>y2)
+			{
+				if(getxpos()<x1&&getxpos()>x2)
+				{
+					if(getypos()<y1&&getypos()>y2)
+					{
+						b_flag=1;
+					}
+				}
+				else
+				b_flag=0;
+			}
+			else
+			{
+				printf("\nERROR : function 'inblock()' <mouse.h> Block incorrectly defined!\nPress Any Key to exit!");
+				getch();
+			       //	exit(0);
+			}
+		}
+		return b_flag;
+}
+
+int inblockxy(int x,int y,int x1,int y1,int x2,int y2)
+{
+	int b_flag=0;
+		if(x1<x2&&y1<y2)
+		{
+			if(x>x1&&x<x2)
+			{
+				if(y>y1&&y<y2)
+				{
+					b_flag=1;
+				}
+			}
+			else
+			b_flag=0;
+		}
+		else
+		{
+			if(x1>x2&&y1>y2)
+			{
+				if(x<x1&&x>x2)
+				{
+					if(y<y1&&y>y2)
+					{
+						b_flag=1;
+					}
+				}
+				else
+				b_flag=0;
+			}
+			else
+			{
+				printf("\nERROR : function 'inblockxy()' <mouse.h> Block incorrectly defined!\nPress Any Key to exit!");
+				getch();
+				//exit(0);
+			}
+		}
+		return b_flag;
+}

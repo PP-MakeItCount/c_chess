@@ -1,0 +1,16 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+#include<dos.h>
+#include<mouse.h>
+void main()
+{
+	int gd=0,gm=0,i,x=40,y=200;
+	clrscr();
+	initgraph(&gd,&gm,"x:\\bgi");
+	showmouse();
+	x=getxpos();
+	y=getypos();
+	printf("position(%d,%d)",x,y);
+	getch();
+}

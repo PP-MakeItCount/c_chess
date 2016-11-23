@@ -1,0 +1,16 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+int main(int argc, char * argv[])
+{
+	int a,b;
+	if(argc!=3)
+	printf("parametes mismatched/////");
+
+
+		a=atoi(argv[1]);
+		b=atoi(argv[2]);
+		printf("%d\t%d",a,b);
+
+
+}
